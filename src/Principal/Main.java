@@ -16,14 +16,18 @@ public class Main {
                 System.out.println("Seleccione una opcion (número): ");
                 int opcion=0;
                 String Srutasou;
+                String idcliente;
                 int Iventanillasou;
                 Scanner ingreso = new Scanner(System.in);
                 opcion = ingreso.nextInt();
 
-                if(opcion>0 && opcion <8){
+                if(opcion>0 && opcion <9){
                     if(opcion == 7) {
-                        System.out.println("Adios! Vuelva pronto");
-                        break;
+                        System.out.println("Ingrese el id del cliente");
+                        Scanner id = new Scanner(System.in);
+                        idcliente = id.nextLine();
+                        massive.busqueda(idcliente);
+
                     }else if(opcion == 1){
                         System.out.println("Carga masiva de clientes");
                         System.out.println("Ingrese la ruta del archivo: ");
@@ -53,7 +57,6 @@ public class Main {
                                 massive.PaseAdelantes(); //Se borra de la lista clientes el primero de la lista
                                 comienzo.atender(massive.pid, massive.pnombre, massive.pimgcolor, massive.pimgbw); //Pasa el cliente a ventanilla
                             }
-
                             pasos ++;
                         }else{
                             System.out.println("No a ingresado la cantidad ventanillas");
@@ -64,6 +67,7 @@ public class Main {
                         massive.OrdenImprimir();
                         comienzo.ImprimirVentana();
                         comienzo.imprimirPila();
+                        comienzo.imprimircolores();
 
                     }else if(opcion == 5){
                         System.out.println("Reportes");
@@ -71,15 +75,18 @@ public class Main {
                         massive.generardot();
                         comienzo.grafo();
 
-                    }else{
+                    }else if(opcion == 6){
                         System.out.println("Eddy Fernando Díaz Galindo");
                         System.out.println("201906558");
                         System.out.println("Estructura de Datos");
                         System.out.println("Ingenieria en Ciencias y Sistemas");
                         System.out.println("5to Semestre");
+                    }else{
+                        System.out.println("Adios! Vuelva pronto");
+                        break;
                     }
                 }else{
-                    System.out.println("Error, solo de aceptan numeros del 1 al 7");
+                    System.out.println("Error, solo de aceptan numeros del 1 al 8");
                 }
             }catch(Exception e){
                 System.out.println("Error de menu, ingrese solamente numeros" + e);
@@ -94,7 +101,8 @@ public class Main {
         System.out.println("4. Estado en memoria de las estructuras");
         System.out.println("5. Reportes");
         System.out.println("6. Acerca de");
-        System.out.println("7. Salir");
+        System.out.println("7. Busqueda de cliente");
+        System.out.println("8. Salir");
     }
 
 }

@@ -82,11 +82,13 @@ public class ListaVentanilla {
                 Ventanilla conexion = BuscarNo(aux.no);
                 if(aux.img_color == 0 && aux.img_bw > 0){
                     conexion.apilar(aux.id, 1, "BW");
+                    System.out.println("La pila de la ventilla " + aux.no + "apilo imagen de blanco y negro" );
                     aux.img_bw--;
                 }
 
                 if (aux.img_color > 0) {
                     conexion.apilar(aux.id,1,"COLOR");
+                    System.out.println("La pila de la ventilla " + aux.no + " apilo imagen de color" );
                     aux.img_color--;
                 }
 
@@ -94,6 +96,7 @@ public class ListaVentanilla {
                     aux.estado = 0;
                     aux.id = "vacio";
                     aux.nombre_cliente = "Libre";
+
                 }
             }
             aux = aux.siguiente;
@@ -104,6 +107,7 @@ public class ListaVentanilla {
         Ventanilla tmp2 = inicio;
         while (tmp2 != null){
             if (tmp2.estado == 0){
+                System.out.println("El cliente " + nombre_cliente+" ingresara a la ventanilla "+tmp2.no);
                 tmp2.estado = 1;
                 tmp2.id = id;
                 tmp2.nombre_cliente = nombre_cliente;
@@ -123,6 +127,7 @@ public class ListaVentanilla {
             }
             tmp3 = tmp3.siguiente;
         }
+
         return "VentanillasLibres";
     }
 

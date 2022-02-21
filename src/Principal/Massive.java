@@ -74,7 +74,7 @@ public class Massive {
         Random random = new Random();
 
         int IngresaCLiente = random.nextInt(MaxCliente - MinCliente +1) + MinCliente;
-        System.out.println("Ingresaron: " + IngresaCLiente);
+        System.out.println("Ingresaron a la cola: " + IngresaCLiente+" nuevos clientes");
         for(int i = 1; i<=IngresaCLiente; i++){
             id++;
             ids = "ran"+id;
@@ -102,4 +102,7 @@ public class Massive {
         pimgbw = CC.gimgbw();
     }
 
+    public void busqueda(String ids){
+        CC.Buscarid(ids);
+    }
 }

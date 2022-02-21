@@ -24,6 +24,15 @@ public class ColaCliente {
             tmp.siguiente = nuevo;
         }
     }
+    public void  Buscarid(String id){
+        Cliente aux = inicio;
+        while(aux != null) {
+            if (aux.id_cliente.equals(id)) {
+                System.out.println("ID: "+ aux.id_cliente+" Nombre: " + aux.nombre_cliente+" Imagen Color: " + aux.img_color+" Imagen BW: " + aux.img_bw);
+            }
+            aux = aux.siguiente;
+        }
+    }
 
     public String gid(){
         Cliente tmp0 = inicio;
@@ -53,6 +62,7 @@ public class ColaCliente {
             inicio = tmp11.siguiente;
             tmp11.siguiente = null;
         }
+
 
         while ( tmp11 != null){
             tmp11 = tmp11.siguiente;

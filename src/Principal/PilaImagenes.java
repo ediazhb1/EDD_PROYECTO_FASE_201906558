@@ -20,6 +20,20 @@ public class PilaImagenes {
         }
     }
 
+    public void PrimeroColorAtendido(){
+        Imagenes tmp11 = inicio;
+        //Borrando el primero de la cola de clientes
+        if(tmp11 != null && tmp11.tipo.equals("COLOR")){
+            inicio = tmp11.siguiente;
+            tmp11.siguiente = null;
+        }
+
+
+        while ( tmp11 != null){
+            tmp11 = tmp11.siguiente;
+        }
+    }
+
     public void mostrar(){
         Imagenes auxiliar = inicio;
         while(auxiliar != null){
