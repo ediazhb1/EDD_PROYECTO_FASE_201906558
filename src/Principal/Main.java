@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Massive massive = new Massive();
         Comienzo comienzo = new Comienzo();
+        int pasos = 1;
 
         boolean preparativo = false;
         while (true){
@@ -36,21 +37,24 @@ public class Main {
                         System.out.println("Ingrese la cantidad de ventanillas: ");
                         Scanner ventanillasou = new Scanner(System.in);
                         Iventanillasou = ventanillasou.nextInt();
-                        comienzo.trabajo(Iventanillasou);
+                        comienzo.trabajo(Iventanillasou); //Abre n cantidad de ventanillas con datos vacios y libres
                         preparativo = true;
 
                     }else if(opcion == 3){
                         if(preparativo) {
                             System.out.println("Ejecutar paso");
-                            massive.primeros();
-                            massive.realizarPaso();
-                            comienzo.disponible();
+                            System.out.println("---------------------------PASO "+pasos+"---------------------------");
+                            massive.primeros(); //Encuentra los primeros clientes de la cola que fueron cargados
+                            massive.realizarPaso(); //Agrega Aleatoriamente clientes a la cola.
+                            comienzo.disponible(); //Comprueba si estan ocupadas las ventanillas
                             if(comienzo.llena.equals("VentanillasLlenas")){
                                 System.out.println("Las Ventanillas estan llenas, espere turno");
                             }else{
-                                massive.PaseAdelantes();
+                                massive.PaseAdelantes(); //Se borra de la lista clientes el primero de la lista
+                                comienzo.atender(massive.pid, massive.pnombre, massive.pimgcolor, massive.pimgbw); //Pasa el cliente a ventanilla
                             }
-                            comienzo.atender(massive.pid, massive.pnombre, massive.pimgcolor, massive.pimgbw);
+
+                            pasos ++;
                         }else{
                             System.out.println("No a ingresado la cantidad ventanillas");
                         }
@@ -59,9 +63,13 @@ public class Main {
                         System.out.println("Estado en memoria de las estructuras");
                         massive.OrdenImprimir();
                         comienzo.ImprimirVentana();
+                        comienzo.imprimirPila();
 
                     }else if(opcion == 5){
                         System.out.println("Reportes");
+                        System.out.println("Visualizar estructuras");
+                        massive.generardot();
+                        comienzo.grafo();
 
                     }else{
                         System.out.println("Eddy Fernando Díaz Galindo");

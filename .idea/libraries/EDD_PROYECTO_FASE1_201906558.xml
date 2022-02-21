@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="EDD_PROYECTO_FASE1_201906558">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gson-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/json-simple-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

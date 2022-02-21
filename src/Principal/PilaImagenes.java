@@ -1,27 +1,29 @@
 package Principal;
 
 public class PilaImagenes {
-    Imagenes inicio,fin;
+    Imagenes inicio;
 
     public PilaImagenes() {
         this.inicio = null;
-        this.fin = null;
     }
 
-    public void apilar(int img){
-        inicio = new Imagenes(img, inicio);
-        if (fin == null){
-            fin = inicio;
+    public void apilar(String id, int img, String tipo){
+        Imagenes nuevo = new Imagenes(id,img,tipo);
+        if (inicio == null) {
+            inicio = nuevo;
+        } else {
+            Imagenes tmp = inicio;
+            while (tmp.siguiente != null){
+                tmp = tmp.siguiente;
+            }
+            tmp.siguiente = nuevo;
         }
     }
 
     public void mostrar(){
         Imagenes auxiliar = inicio;
         while(auxiliar != null){
-            System.out.print(auxiliar.img);
-            if(auxiliar.siguiente == null){
-                System.out.println("");
-            }
+            System.out.print("["+auxiliar.id+" "+auxiliar.img+auxiliar.tipo+"]--");
             auxiliar = auxiliar.siguiente;
         }
     }

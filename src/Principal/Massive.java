@@ -17,7 +17,6 @@ public class Massive {
     public Massive(){
     }
 
-
     public void Analyzer(String path){
         JSONParser parser = new JSONParser();
 
@@ -57,11 +56,14 @@ public class Massive {
     public void OrdenImprimir(){
         CC.imprimirCliente();
     }
-
+    public void generardot(){
+        CC.grafo();
+    }
+    int id = 0;
     public void realizarPaso(){
         int MinCliente = 0;
         int MaxCliente = 3;
-        int id = 0;
+
         String ids;
         int MinNombre = 0;
         int MaxNombre = 18;
@@ -71,11 +73,11 @@ public class Massive {
 
         Random random = new Random();
 
-        int IngresaCLiente = random.nextInt(MaxCliente + MinCliente) + MinCliente;
+        int IngresaCLiente = random.nextInt(MaxCliente - MinCliente +1) + MinCliente;
         System.out.println("Ingresaron: " + IngresaCLiente);
         for(int i = 1; i<=IngresaCLiente; i++){
             id++;
-            ids = "r"+id;
+            ids = "ran"+id;
             int NombreCliente = random.nextInt(MaxNombre + MinNombre) + MinNombre;
             int ImageColor = random.nextInt(MaxImagenes + MinImagenes) + MinImagenes;
             int ImageBW = random.nextInt(MaxImagenes + MinImagenes) + MinImagenes;

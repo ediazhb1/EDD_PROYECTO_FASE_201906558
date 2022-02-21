@@ -1,8 +1,11 @@
 package Principal;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class ColaCliente {
     public Cliente inicio;
-    Comienzo comienzo = new Comienzo();
+    String graph ="";
 
     public ColaCliente() {
         inicio = null;
@@ -58,7 +61,7 @@ public class ColaCliente {
 
     public void imprimirCliente(){
         Cliente tmp1 = inicio;
-        System.out.println("---------------------------Cola de Recepción---------------------------");
+        System.out.println("--------------------------------Cola de Recepción--------------------------------");
         while ( tmp1 != null){
             if(tmp1.siguiente == null) {
                 System.out.print("[id " + tmp1.id_cliente + " | nombre " + tmp1.nombre_cliente + " | color "+ tmp1.img_color+" | bw "+tmp1.img_bw+"] -> ");
@@ -75,6 +78,55 @@ public class ColaCliente {
         System.out.println("");
     }
 
+
+    public void grafo(){
+        graph += "digraph G { \n";
+        graph += "label = \"Cola Recepción\"\n";
+        Cliente tmp1 = inicio;
+        int i = 0;
+        while ( tmp1 != null){
+            graph += "a"+i+"[label=\"CLIENTE: "+tmp1.id_cliente+"\n IMGC: "+tmp1.img_color+"\n IMGBW: "+tmp1.img_bw+"\"];\n";
+            i++;
+            tmp1 = tmp1.siguiente;
+        }
+        graph += "{rank = same;\n";
+
+        for(int a = 0; a<i-1; a++){
+            graph += "a"+a +"-> a" + (a+1) +";\n";
+        }
+        graph += "}\n";
+        graph += "}";
+        //System.out.println(graph);
+        GenerarGrafo();
+    }
+
+    public void GenerarGrafo(){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        /*Crea un archivo con extesión .dot con el texto de la variable graph*/
+        try{
+            fichero = new FileWriter("ColaRecepcion.dot");
+            pw = new PrintWriter(fichero);
+            pw.write(graph);
+            pw.close();
+            fichero.close();
+        }catch(Exception e){
+            System.out.println("Error en generar dot de la cola");
+        }finally {
+            if(pw!=null){
+                pw.close();
+            }
+        }
+        /*Convierte el archivo con extesión .dot a .png */
+        try{
+            ProcessBuilder proceso;
+            proceso = new ProcessBuilder("dot", "-Tpng","-o","GraphRecepcion.png","ColaRecepcion.dot");
+            proceso.redirectErrorStream(true);
+            proceso.start();
+        }catch (Exception e){
+            System.out.println("Error en generar png de la cola");
+        }
+    }
 
 
 }
