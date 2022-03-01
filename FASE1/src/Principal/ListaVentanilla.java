@@ -73,13 +73,16 @@ public class ListaVentanilla {
         return null;
     }
 
+    public int validacionimpresora = 0;
     public void RecibirOrden(){
         Ventanilla aux = inicio;
+        validacionimpresora = 0;
         while(aux != null) {
             if(aux.estado == 1) {
                 aux.estado = 2;
             }else if(aux.estado == 2){
                 Ventanilla conexion = BuscarNo(aux.no);
+
                 if(aux.img_color == 0 && aux.img_bw > 0){
                     conexion.apilar(aux.id, 1, "BW");
                     System.out.println("La pila de la ventilla " + aux.no + "apilo imagen de blanco y negro" );
@@ -96,7 +99,7 @@ public class ListaVentanilla {
                     aux.estado = 0;
                     aux.id = "vacio";
                     aux.nombre_cliente = "Libre";
-
+                    validacionimpresora = 1;
                 }
             }
             aux = aux.siguiente;

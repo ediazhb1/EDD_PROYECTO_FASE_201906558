@@ -108,20 +108,23 @@ public class Comienzo {
     public void atender(String id,String nombre_cliente,int img_color,int img_bw){
         LV.atender(id,nombre_cliente,img_color,img_bw); //Los datos y las impresiones son entregadas a la ventanilla
         LV.RecibirOrden();
-        if(LV.inicio.img_color == 0 && LV.inicio.img_bw == 0) {
+
+        if (LV.validacionimpresora == 1 ) {
             MandarColor();
         }
+
     }
     public void MandarColor(){
         for(int i = 1; i<= TotalVentana;i++) {
             Ventanilla conexion = LV.BuscarNo(i);
             Imagenes inicio = conexion.inicio;
 
-            if(inicio != null) {
+            while(inicio != null) {
                 if (inicio.tipo.equals("COLOR")) {
                     conexion.PrimeroColorAtendido();
                     cic.agregarcolor("IMGCOLOR", 1);
                 }
+                inicio = inicio.siguiente;
             }
         }
     }
