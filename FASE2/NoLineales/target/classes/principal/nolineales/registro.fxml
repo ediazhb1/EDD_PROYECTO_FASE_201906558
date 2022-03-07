@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Register">
+   <left>
+      <AnchorPane prefHeight="450.0" prefWidth="227.0" style="-fx-background-color: #116fa2;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="192.0" fitWidth="182.0" layoutX="21.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../news.png" />
+               </image>
+            </ImageView>
+            <Button layoutY="2.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="50.0" prefWidth="39.0" style="-fx-background-color: #116fa3;" />
+            <ImageView disable="true" fitHeight="38.0" fitWidth="35.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../back.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="450.0" prefWidth="369.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="124.0" layoutY="23.0" text="Registro">
+               <font>
+                  <Font name="Gubbi" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="135.0" text="NOMBRE">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="197.0" text="DPI">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="263.0" text="CONTRASEÑA">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txnombre" layoutX="163.0" layoutY="131.0" promptText="Nombre">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <TextField fx:id="txdpi" layoutX="163.0" layoutY="193.0" promptText="DPI">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <PasswordField fx:id="txpass" layoutX="163.0" layoutY="259.0" promptText="CONTRASEÑA">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></PasswordField>
+            <Button layoutX="132.0" layoutY="336.0" onAction="#Registrar" mnemonicParsing="false" prefHeight="46.0" prefWidth="101.0" style="-fx-background-color: #43b6d3;" text="Registrar">
+               <font>
+                  <Font name="Inter Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="lbregistrado" layoutX="122.0" layoutY="308.0" textFill="#0286f5" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
