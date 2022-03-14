@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class LogIn {
+    HelloApplication m = new HelloApplication();
+
     public LogIn() {
     }
 
@@ -31,7 +33,7 @@ public class LogIn {
 
         }else if(txuser.getText().toString().equals("cliente") && txpass.getText().toString().equals("123")) {
             lbwrong.setText("cliente!");
-
+            m.changeCliente();
         }else if(txuser.getText().isEmpty() && txpass.getText().isEmpty()) {
             lbwrong.setText("Ingrese sus credenciales.");
         } else {
@@ -40,7 +42,6 @@ public class LogIn {
     }
 
     public void toRegister(ActionEvent event) throws IOException {
-        HelloApplication m = new HelloApplication();
         m.changeRegister();
     }
 

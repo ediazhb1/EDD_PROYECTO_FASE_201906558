@@ -32,7 +32,13 @@ public class HelloApplication extends Application {
         stg.setScene(scene);
         stg.show();
     }
-
+    public void changeCliente() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("cliente.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 900, 560);
+        stg.setTitle("Cliente");
+        stg.setScene(scene);
+        stg.show();
+    }
     public static void main(String[] args) {
         launch();
     }
