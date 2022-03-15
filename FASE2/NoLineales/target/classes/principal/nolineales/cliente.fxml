@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Cliente">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Cliente">
    <top>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #103440;" BorderPane.alignment="CENTER">
          <children>
@@ -24,20 +25,60 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="511.0" prefWidth="190.0" style="-fx-background-color: #267896;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="511.0" prefWidth="201.0" style="-fx-background-color: #267896;" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="BASELINE_LEFT" onAction="#RutaArchivo" mnemonicParsing="false" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Archivo" textFill="WHITE">
+            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#RutaArchivo" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Capas" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../file.png" />
+                        <Image url="@../../capa.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#toImages" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Imágenes" textFill="WHITE">
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button alignment="BASELINE_LEFT" onAction="#toLogin" mnemonicParsing="false" prefHeight="43.0" prefWidth="204.0" style="-fx-background-color: #147a9e;" text="Cerrar Sesión" textFill="WHITE">
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#toAlbum" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Albumes" textFill="WHITE">
+               <font>
+                  <Font size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../album.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#toLogin" prefHeight="43.0" prefWidth="204.0" style="-fx-background-color: #147a9e;" text="Cerrar Sesión" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -48,17 +89,38 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
+            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
+            <Label fx:id="lbname" alignment="BASELINE_CENTER" prefHeight="87.0" prefWidth="208.0" text="Cliente" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
          </children>
       </VBox>
    </left>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="58.0" layoutY="20.0" text="Seleccione Capa:" />
-            <ComboBox layoutX="39.0" layoutY="54.0" prefWidth="150.0" />
+            <Label layoutX="58.0" layoutY="20.0" text="Capas Cargadas:" />
+            <ComboBox fx:id="cmbx" layoutX="39.0" layoutY="54.0" prefWidth="150.0" />
             <ImageView fitHeight="483.0" fitWidth="434.0" layoutX="245.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <Line endX="105.0" endY="-194.0" layoutX="117.0" layoutY="208.0" startX="105.0" startY="289.0" />
+            <Button fx:id="btCapa" disable="true" layoutX="37.0" layoutY="96.0" mnemonicParsing="false" onAction="#MostrarCapa" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Seleccionar Capa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

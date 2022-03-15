@@ -2,9 +2,84 @@ package principal.nolineales;
 
 public class Matriz {
     public Nodo root;
+    int MaxCol;
+    int MaxFila;
+    public String graph ="";
 
     public Matriz() {
-         root = new Nodo(-1,-1, "#ffffff");
+         root = new Nodo(-1,-1, "white");
+    }
+
+    public void mayorcol(){
+        Nodo aux = root;
+
+        while (aux != null){
+            if(aux.abajo == null && aux.x == -1){
+                MaxCol = aux.y;
+            }
+            aux = aux.abajo;
+        }
+    }
+
+    public void mayorfila(){
+        Nodo aux = root;
+
+        while (aux != null){
+            if(aux.siguiente == null && aux.y == -1){
+                MaxFila = aux.x;
+            }
+            aux = aux.siguiente;
+        }
+    }
+
+
+    public void graficar(String Capa){
+        int x = 0;
+        int y = 0;
+        graph = "digraph G {\n" +
+                "node [shape=plaintext];\n" +
+                "label=\"Capa "+Capa+"\";\n" +
+                "some_node [\n" +
+                "label=<\n" +
+                "<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+        
+        while (y != (MaxCol+1)){
+            graph += "<tr>\n";
+            while (x != (MaxFila+1)){
+                Nodo pixel = buscarpixel(x, y);
+                if(pixel != null){
+                    graph += "  <td bgcolor=\""+pixel.color+"\" width=\"1\" height=\"1\"></td>\n";
+                }else{
+                    graph += "  <td bgcolor=\"white\" width=\"1\" height=\"1\"></td>\n";
+                }
+                x++;
+            }
+            x =0;
+            graph += "</tr>\n";
+            y++;
+        }
+
+        graph += "</table>>\n" +
+                "];\n" +
+                "}";
+        System.out.println(graph);
+    }
+
+
+    public Nodo buscarpixel(int x, int y){
+        Nodo aux = root;
+        while (aux != null){
+            String txt = "";
+            Nodo aux2 = aux;
+            while (aux2 != null){
+                if(aux2.x == x && aux2.y == y){
+                    return aux2;
+                }
+                aux2 = aux2.siguiente;
+            }
+            aux = aux.abajo;
+        }
+        return null;
     }
 
     public void imprimir(){
@@ -78,13 +153,13 @@ public class Matriz {
 
     public Nodo crear_columna(int columna) {
         Nodo nodo_col = root;
-        Nodo nuevo = new Nodo(columna, -1, "COL");////////
+        Nodo nuevo = new Nodo(columna, -1, "white");////////
         return orden_columna(nuevo, nodo_col);
     }
 
     public Nodo crear_fila(int y) {
         Nodo nodo_fila = root;
-        Nodo nuevo = new Nodo(-1, y, "FILA");////////////
+        Nodo nuevo = new Nodo(-1, y, "white");////////////
         return orden_fila(nuevo, nodo_fila);
     }
 
