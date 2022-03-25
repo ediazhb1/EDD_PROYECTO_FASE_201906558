@@ -1,5 +1,8 @@
 package principal.nolineales;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class Matriz {
     public Nodo root;
     int MaxCol;
@@ -32,17 +35,26 @@ public class Matriz {
         }
     }
 
+    public void exterminar(){
+        Nodo aux = root;
+
+        aux.siguiente = null;
+        aux.abajo = null;
+
+    }
+
 
     public void graficar(String Capa){
         int x = 0;
         int y = 0;
-        graph = "digraph G {\n" +
+        graph = "graph G {\n" +
+                "graph [dpi = 300.00 ];\n"+
                 "node [shape=plaintext];\n" +
                 "label=\"Capa "+Capa+"\";\n" +
                 "some_node [\n" +
                 "label=<\n" +
                 "<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
-        
+
         while (y != (MaxCol+1)){
             graph += "<tr>\n";
             while (x != (MaxFila+1)){
@@ -62,7 +74,35 @@ public class Matriz {
         graph += "</table>>\n" +
                 "];\n" +
                 "}";
-        System.out.println(graph);
+        GenerarGrafo(Capa);
+        //System.out.println(graph);
+    }
+
+    public void GenerarGrafo(String Capa){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        /*Crea un archivo con extesión .dot con el texto de la variable graph*/
+        try{
+            fichero = new FileWriter("Capas.dot");
+            pw = new PrintWriter(fichero);
+            pw.write(graph);
+            pw.close();
+            fichero.close();
+        }catch(Exception e){
+            System.out.println("Error en generar dot de la cola");
+        }finally {
+            if(pw!=null){
+                pw.close();
+            }
+        }
+        try{
+            ProcessBuilder proceso;
+            proceso = new ProcessBuilder("dot", "-Tpng", "-o","src/main/resources/Capa"+Capa+".png","Capas.dot");
+            proceso.redirectErrorStream(true);
+            proceso.start();
+        }catch (Exception e){
+            System.out.println("Error en generar png de la cola");
+        }
     }
 
 

@@ -30,7 +30,7 @@ public class LogIn {
 
         if(txuser.getText().toString().equals("admin") && txpass.getText().toString().equals("123")) {
             lbwrong.setText("admin!");
-
+            //m.changeAdmin();
         }else if(txuser.getText().toString().equals("cliente") && txpass.getText().toString().equals("123")) {
             lbwrong.setText("cliente!");
             m.changeCliente();
