@@ -49,6 +49,15 @@ public class HelloApplication extends Application {
         stg.show();
     }
 
+    public void changeImagen() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("cliente_img.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        stg.setTitle("Cliente");
+        stg.setScene(scene);
+        stg.show();
+    }
+
+
     public static void main(String[] args) {
         launch();
     }

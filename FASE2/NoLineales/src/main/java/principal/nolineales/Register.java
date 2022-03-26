@@ -4,8 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import principal.ArbolBB.ABB;
-import principal.ArbolBB.Nodobb;
+import principal.ArbolAVL.AVL;
+import principal.ArbolAVL.NodoAVL;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class Register {
         if(txnombre.getText().isEmpty() || txpass.getText().isEmpty() || txdpi.getText().isEmpty()) {
             lbregistrado.setText("Faltan credenciales.");
         }else{
-            ABB arbol = new ABB();
+            AVL arbol = new AVL();
             dpi = Double.parseDouble(txdpi.getText().toString());
             arbol.insertar(10);
             arbol.insertar(13);
@@ -51,24 +51,24 @@ public class Register {
             arbol.insertar(2);
 
             System.out.println("INORDEN: ");
-            arbol.InicioInOrden();
+            arbol.InOrden(arbol.obtRaiz());
             System.out.println("");
             System.out.println("POSTORDEN: ");
-            arbol.InicioPostOrden();
+            arbol.PostOrden(arbol.obtRaiz());
             System.out.println("");
             System.out.println("PREORDEN: ");
-            arbol.InicioPreOrden();
+            arbol.PreOrden(arbol.obtRaiz());
             System.out.println("");
 
 
             System.out.print("Busqueda del numero 2: ");
-            Nodobb x = arbol.IniciarBusqueda(2);
-            System.out.println(x.getId());
+            NodoAVL x = arbol.IniciarBusqueda(2);
+            System.out.println(x.getDato());
 
             System.out.print("Busqueda del numero 115: ");
-            Nodobb a = arbol.IniciarBusqueda(115);
+            NodoAVL a = arbol.IniciarBusqueda(115);
             if(a != null){
-                System.out.println(a.getId());
+                System.out.println(a.getDato());
             }
 
 

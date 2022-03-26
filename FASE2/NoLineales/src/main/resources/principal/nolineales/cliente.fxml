@@ -29,7 +29,7 @@
       <VBox prefHeight="511.0" prefWidth="201.0" style="-fx-background-color: #267896;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#RutaArchivo" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Capas" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#RutaArchivo" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #1B9DCC;" text="Cargar Capas" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>

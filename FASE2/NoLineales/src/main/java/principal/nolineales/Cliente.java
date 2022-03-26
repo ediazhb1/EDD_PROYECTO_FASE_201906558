@@ -31,7 +31,6 @@ public class Cliente {
 
     HelloApplication m = new HelloApplication();
     ABB arbol = new ABB();
-    Matriz mz = new Matriz();
 
     public void toLogin() throws IOException {
         m.changeStart();
@@ -129,8 +128,7 @@ public class Cliente {
     }
 
     public void toImages() throws IOException, ParseException {
-
-
+        m.changeImagen();
     }
 
     public void toAlbum(ActionEvent actionEvent) {
