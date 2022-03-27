@@ -1,6 +1,8 @@
 package principal.ArbolAVL;
 
-public class NodoAVL {
+import principal.ArbolBB.ABB;
+
+public class NodoAVL extends ABB {
     int dato, fe;
     NodoAVL derecha,izquierda;
 

@@ -31,6 +31,7 @@ public class Cliente {
 
     HelloApplication m = new HelloApplication();
     ABB arbol = new ABB();
+    Cliente_Img imgs = new Cliente_Img();
 
     public void toLogin() throws IOException {
         m.changeStart();
@@ -68,9 +69,9 @@ public class Cliente {
                 JSONObject jsonobj1 = (JSONObject) jsonarra.get(i);
                 contcombo = jsonobj1.get("id_capa").toString();
                 cmbx.getItems().addAll(contcombo);
-                arbol.insertar(Integer.parseInt(contcombo));
+                arbol.insertarbb(Integer.parseInt(contcombo));//insertando capas en el abb
 
-                Nodobb conexion = arbol.IniciarBusqueda(Integer.parseInt(contcombo));
+                Nodobb conexion = arbol.IniciarBusquedabb(Integer.parseInt(contcombo));
                 JSONArray pixeles = (JSONArray) jsonobj1.get("pixeles");
                 for (int j = 0; j < pixeles.size(); j++) {
                     JSONObject jsonobj2 = (JSONObject) pixeles.get(j);
@@ -81,12 +82,12 @@ public class Cliente {
             }
             btCapa.setDisable(false);
         } catch (Exception e) {
-            System.out.println("Error en parsear json " + e);
+            System.out.println("Error en parsear json de capas" + e);
         }
     }
 
     public void MostrarCapa() {
-        Nodobb conexion = arbol.IniciarBusqueda(Integer.parseInt(cmbx.getValue()));
+        Nodobb conexion = arbol.IniciarBusquedabb(Integer.parseInt(cmbx.getValue()));
         conexion.mayorcol();
         conexion.mayorfila();
         conexion.graficar(cmbx.getValue());
@@ -128,7 +129,9 @@ public class Cliente {
     }
 
     public void toImages() throws IOException, ParseException {
+        imgs.heredar(arbol);
         m.changeImagen();
+
     }
 
     public void toAlbum(ActionEvent actionEvent) {

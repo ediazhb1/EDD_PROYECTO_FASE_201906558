@@ -3,21 +3,20 @@ package principal.ArbolBB;
 public class ABB {
     Nodobb inicial;
     Nodobb finals = null;
-
-
     public ABB(){
         this.inicial = null;
     }
 
-    public void insertar(int valor){
+    public void insertarbb(int valor){
+
         if(this.inicial == null) {
-            this.inicial = new Nodobb(valor);
+            this.inicial = new Nodobb(valor,0);
         }else{
             this.inicial.insertar(valor);
         }
     }
 
-    public Nodobb IniciarBusqueda(int capa) {
+    public Nodobb IniciarBusquedabb(int capa) {
         Nodobb x = BuscarCapa(this.inicial, capa);
         if (x != null) {
             return x;
@@ -30,7 +29,7 @@ public class ABB {
 
         if(nodo == null){
             finals = null;
-            System.out.println("No se encontro el nodo");
+            System.out.println("No se encontro el nodo en el abb");
         }else{
             if(nodo.getId() == capa){
                 finals = nodo;
@@ -43,6 +42,45 @@ public class ABB {
         }
         return finals;
     }
+
+    //-------------------RECORRIDO AMPLITUD-------------------
+    public void InicioAmplitud(){
+        this.Amplitud(this.inicial);
+    }
+
+    public void Amplitud(Nodobb nodo){
+        Nodobb aux;
+        ColaAmplitud ca = new ColaAmplitud();
+
+        if(nodo != null){
+            ca.insertarCola(nodo);
+            System.out.println(nodo.getId());
+            while(ca.inicio.id !=null){
+
+                aux = ca.inicio.id;
+                ca.EliminarPrimero();
+
+                if(aux.getIzquierda() !=null) {
+                    System.out.print(aux.izquierda.getId() + ", ");
+                    ca.insertarCola(aux.getIzquierda());
+                }
+
+                if(aux.getDerecha() !=null) {
+                    System.out.print(aux.derecha.getId() + ", ");
+                    ca.insertarCola(aux.getDerecha());
+                    System.out.println("");
+                }
+
+                if(ca.inicio == null){
+                    break;
+                }
+
+        }
+       }
+
+    }
+
+
 
 
     //-------------------PREORDEN----------------------

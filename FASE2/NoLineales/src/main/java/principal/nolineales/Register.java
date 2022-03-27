@@ -4,8 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import principal.ArbolAVL.AVL;
-import principal.ArbolAVL.NodoAVL;
+import principal.ArbolBB.ABB;
 
 import java.io.IOException;
 
@@ -36,21 +35,25 @@ public class Register {
         if(txnombre.getText().isEmpty() || txpass.getText().isEmpty() || txdpi.getText().isEmpty()) {
             lbregistrado.setText("Faltan credenciales.");
         }else{
-            AVL arbol = new AVL();
             dpi = Double.parseDouble(txdpi.getText().toString());
-            arbol.insertar(10);
-            arbol.insertar(13);
-            arbol.insertar(15);
+            ABB arbol = new ABB();
 
-            arbol.insertar(14);
-            arbol.insertar(16);
-            arbol.insertar(8);
-            arbol.insertar(1);
-            arbol.insertar(12);
-            arbol.insertar(9);
-            arbol.insertar(2);
+            arbol.insertarbb(10);
+            arbol.insertarbb(12);
+            arbol.insertarbb(13);
+            arbol.insertarbb(14);
+            arbol.insertarbb(8);
+            arbol.insertarbb(3);
+            arbol.insertarbb(9);
+            arbol.insertarbb(11);
+            arbol.insertarbb(18);
+            arbol.insertarbb(2);
+            arbol.InicioAmplitud();
 
-            System.out.println("INORDEN: ");
+
+
+
+            /*System.out.println("INORDEN: ");
             arbol.InOrden(arbol.obtRaiz());
             System.out.println("");
             System.out.println("POSTORDEN: ");
@@ -69,7 +72,7 @@ public class Register {
             NodoAVL a = arbol.IniciarBusqueda(115);
             if(a != null){
                 System.out.println(a.getDato());
-            }
+            }*/
 
 
             lbregistrado.setText("Usuario Registrado!");

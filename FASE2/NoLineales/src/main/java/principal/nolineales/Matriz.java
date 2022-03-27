@@ -37,11 +37,10 @@ public class Matriz {
 
     public void exterminar(){
         Nodo aux = root;
-
         aux.siguiente = null;
         aux.abajo = null;
-
     }
+
 
 
     public void graficar(String Capa){
@@ -89,7 +88,7 @@ public class Matriz {
             pw.close();
             fichero.close();
         }catch(Exception e){
-            System.out.println("Error en generar dot de la cola");
+            System.out.println("Error en generar dot de la capa");
         }finally {
             if(pw!=null){
                 pw.close();
@@ -101,7 +100,7 @@ public class Matriz {
             proceso.redirectErrorStream(true);
             proceso.start();
         }catch (Exception e){
-            System.out.println("Error en generar png de la cola");
+            System.out.println("Error en generar png de la capa");
         }
     }
 
@@ -109,7 +108,6 @@ public class Matriz {
     public Nodo buscarpixel(int x, int y){
         Nodo aux = root;
         while (aux != null){
-            String txt = "";
             Nodo aux2 = aux;
             while (aux2 != null){
                 if(aux2.x == x && aux2.y == y){
@@ -136,6 +134,9 @@ public class Matriz {
             aux = aux.abajo;
         }
     }
+
+
+
 
     public void insertarNodo(int x,int y,String color){
         Nodo nuevo = new Nodo(x,y, color);
@@ -168,6 +169,8 @@ public class Matriz {
         }
 
     }
+
+
 
     public Nodo buscarColumna(int x){
         Nodo aux = root;
