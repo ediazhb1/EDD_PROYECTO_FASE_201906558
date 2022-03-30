@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Cliente_Img">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Cliente_Img">
    <top>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #103440;" BorderPane.alignment="CENTER">
          <children>
@@ -130,23 +130,32 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imgcapa" fitHeight="505.0" fitWidth="434.0" layoutX="245.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgcapa" fitHeight="505.0" fitWidth="450.0" layoutX="245.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <Line endX="105.0" endY="-194.0" layoutX="117.0" layoutY="208.0" startX="115.0" startY="310.0" />
-            <Button fx:id="btnPRL" layoutX="37.0" layoutY="124.0" mnemonicParsing="false" onAction="#PRL" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Recorrido Limitado" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btnPRL" layoutX="44.0" layoutY="69.0" mnemonicParsing="false" onAction="#PRL" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Recorrido Limitado" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <ProgressBar fx:id="progressb" layoutX="485.0" layoutY="509.0" prefWidth="200.0" progress="0.0" />
-            <Button fx:id="btPAI" layoutX="38.0" layoutY="210.0" mnemonicParsing="false" onAction="#PAI" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Árbol de Imágenes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btPAI" layoutX="45.0" layoutY="155.0" mnemonicParsing="false" onAction="#PAI" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Árbol de Imágenes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="btPCapa" layoutX="38.0" layoutY="301.0" mnemonicParsing="false" onAction="#PCapa" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por capa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btPCapa" layoutX="45.0" layoutY="246.0" mnemonicParsing="false" onAction="#PCapa" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por capa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="Titulo" alignment="CENTER" layoutX="22.0" prefHeight="57.0" prefWidth="185.0" text="Por Recorrido Limitado" textAlignment="CENTER" underline="true" visible="false" wrapText="true">
                <font>
@@ -173,17 +182,31 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnCrearPRL" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPRL" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+            <Button fx:id="btnCrearPRL" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPRL" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnCrearPAI" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPAI" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+            <Button fx:id="btnCrearPAI" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPAI" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnCrearPC" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPC" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+            <Button fx:id="btnCrearPC" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPC" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="lbCarga" layoutX="524.0" layoutY="536.0" text="Sin Cargar Archivo" textFill="RED" />
+            <Button fx:id="btEliminar" layoutX="46.0" layoutY="340.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Eliminar Imagen" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnBorrar" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#borrarimg" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Eliminar Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

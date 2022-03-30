@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class Register {
 
-
-
     public Register() {
     }
 
@@ -30,27 +28,13 @@ public class Register {
         m.changeStart();
     }
 
-    public void Registrar(ActionEvent actionEvent)  throws IOException{
+    public void Registrar(ActionEvent actionEvent){
         double dpi;
         if(txnombre.getText().isEmpty() || txpass.getText().isEmpty() || txdpi.getText().isEmpty()) {
             lbregistrado.setText("Faltan credenciales.");
         }else{
             dpi = Double.parseDouble(txdpi.getText().toString());
             ABB arbol = new ABB();
-
-            arbol.insertarbb(10);
-            arbol.insertarbb(12);
-            arbol.insertarbb(13);
-            arbol.insertarbb(14);
-            arbol.insertarbb(8);
-            arbol.insertarbb(3);
-            arbol.insertarbb(9);
-            arbol.insertarbb(11);
-            arbol.insertarbb(18);
-            arbol.insertarbb(2);
-            arbol.InicioAmplitud();
-
-
 
 
             /*System.out.println("INORDEN: ");

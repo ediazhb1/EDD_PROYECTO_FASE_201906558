@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
@@ -38,8 +39,11 @@ public class Cliente_Img {
     public ProgressBar progressb;
     public ImageView imgcapa;
     public static Thread th;
+    public static ABB x;
+    public Label lbCarga;
+    public Button btEliminar;
+    public Button btnBorrar;
     String num = "";
-
 
     HelloApplication m = new HelloApplication();
     AVL arbolavl = new AVL();
@@ -50,6 +54,7 @@ public class Cliente_Img {
     }
 
     public void toAlbum(ActionEvent actionEvent) {
+        arbolavl.iniciarpre();
     }
 
     public void toReport(ActionEvent actionEvent) {
@@ -61,6 +66,7 @@ public class Cliente_Img {
 
 
     public void PRL() {
+        btEliminar.setVisible(false);
         btnPRL.setVisible(false);
         btPAI.setVisible(false);
         btPCapa.setVisible(false);
@@ -90,6 +96,7 @@ public class Cliente_Img {
     }
 
     public void PAI(ActionEvent actionEvent) {
+        btEliminar.setVisible(false);
         btnPRL.setVisible(false);
         btPAI.setVisible(false);
         btPCapa.setVisible(false);
@@ -115,6 +122,7 @@ public class Cliente_Img {
         btnPRL.setVisible(false);
         btPAI.setVisible(false);
         btPCapa.setVisible(false);
+        btEliminar.setVisible(false);
         regresar.setVisible(true);
         RadioIn.setVisible(false);
         RadioPos.setVisible(false);
@@ -135,10 +143,31 @@ public class Cliente_Img {
 
     }
 
+    public void Eliminar(ActionEvent actionEvent) {
+        btnBorrar.setVisible(true);
+        btnPRL.setVisible(false);
+        btEliminar.setVisible(false);
+        btPAI.setVisible(false);
+        btPCapa.setVisible(false);
+        regresar.setVisible(true);
+        Titulo.setVisible(true);
+        Titulo.setText("Eliminar Imagen");
+        numero.setVisible(true);
+        numero.setText("ID de la Capas:");
+        txboxnum.setVisible(true);
+        txboxnum.setPromptText("1");
+
+        btnCrearPC.setVisible(false);
+        btnCrearPAI.setVisible(false);
+        btnCrearPRL.setVisible(false);
+    }
+
     public void toBacks() {
+        btnBorrar.setVisible(false);
         btnPRL.setVisible(true);
         btPAI.setVisible(true);
         btPCapa.setVisible(true);
+        btEliminar.setVisible(true);
         regresar.setVisible(false);
         RadioIn.setVisible(false);
         RadioPos.setVisible(false);
@@ -154,7 +183,7 @@ public class Cliente_Img {
         btnCrearPRL.setVisible(false);
     }
 
-    public static ABB x;
+
     public void heredar(ABB harbol){
          x = harbol;
     }
@@ -179,37 +208,15 @@ public class Cliente_Img {
     }
 
 
-    public void CrearImgPC() {
-        String contxbox;
-        contxbox = txboxnum.getText();
-        String[] ids1 = contxbox.split(",");
-
-        for(int i = 0; i < ids1.length;i++){
-            num += ids1[i] + " ";
-            Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(ids1[i]));
-            if(conexion3 !=null) {
-                Nodo aux = conexion3.root;
-
-                while (aux != null) {
-                    Nodo aux2 = aux;
-                    while (aux2 != null) {
-                        imagenes.insertarNodo(aux2.x, aux2.y, aux2.color);
-                        aux2 = aux2.siguiente;
-                    }
-                    aux = aux.abajo;
-                }
-            }else{
-                System.out.println("No existe la capa que ingresó");
-            }
+    public void reiniciarimg(){
+        try{
+            imagenes.exterminar();
+        }catch (Exception e){
 
         }
-
-        imagenes.mayorcol();
-        imagenes.mayorfila();
-        imagenes.graficar(num);
-        progres();
-
     }
+
+
 
     public void progres(){ //Cuando imagen ya fue graficada con graphviz, se inicia una progress bar para insertar la imagen en la UI
         th = new Thread() {
@@ -263,16 +270,11 @@ public class Cliente_Img {
                     conexion.insertarbb(Integer.parseInt(capas.get(j).toString()));
                 }
             }
-            /*System.out.println("INORDEN: ");
-            arbolavl.InOrden(arbolavl.obtRaiz());
-            System.out.println("");
-            System.out.println("POSTORDEN: ");
-            arbolavl.PostOrden(arbolavl.obtRaiz());
-            System.out.println("");
-            System.out.println("PREORDEN: ");
-            arbolavl.PreOrden(arbolavl.obtRaiz());
-            System.out.println("");*/
-
+            btnCrearPRL.setDisable(false);
+            btnCrearPAI.setDisable(false);
+            btnCrearPC.setDisable(false);
+            lbCarga.setText("Archivo Cargado!");
+            lbCarga.setTextFill(Color.GREEN);
 
         } catch (Exception e) {
             System.out.println("Error en parsear json de imagenes" + e);
@@ -282,13 +284,110 @@ public class Cliente_Img {
     }
 
     public void CrearImgPAI(ActionEvent actionEvent) {
+        reiniciarimg();
+        num = "";
         String contxbox;
         contxbox = txboxnum.getText();
-        NodoAVL conexion = arbolavl.IniciarBusqueda(Integer.parseInt(contxbox));
 
+        try{
+            NodoAVL conexion = arbolavl.IniciarBusqueda(Integer.parseInt(contxbox));
+            conexion.InicioAmplitud();
+            String[] ids1 = conexion.contAmplitud.split(",");
+            for(int i = 0; i < ids1.length;i++) {
+                num += ids1[i] + " ";
+                Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(ids1[i]));
+                nuevaImagen(conexion3);
+            }
+        }catch (Exception e){
+            System.out.println("ID no encontrado");
+        }
+        imagenes.mayorcol();
+        imagenes.mayorfila();
+        imagenes.graficar(num);
+        progres();
+    }
+
+    public void CrearImgPC() {
+        reiniciarimg();
+        num = "";
+        String contxbox;
+        contxbox = txboxnum.getText();
+        String[] ids1 = contxbox.split(",");
+
+        for(int i = 0; i < ids1.length;i++){
+            num += ids1[i] + " ";
+            Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(ids1[i]));
+            nuevaImagen(conexion3);
+        }
+
+        imagenes.mayorcol();
+        imagenes.mayorfila();
+        imagenes.graficar(num);
+        progres();
 
     }
 
     public void CrearImgPRL(ActionEvent actionEvent) {
+        reiniciarimg();
+        num = "";
+        int contxbox;
+        contxbox = Integer.parseInt(txboxnum.getText());
+
+        if(RadioIn.isSelected()){
+            System.out.println("Inorden");
+            x.InicioInOrden();
+            String[] capasin = x.contIn.split(",");
+
+            for (int i = 0; i < contxbox; i++) {
+                num += capasin[i] +" ";
+                Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(capasin[i]));
+                nuevaImagen(conexion3);
+            }
+
+        }else if(RadioPos.isSelected()){
+            System.out.println("Postorden");
+            x.InicioPostOrden();
+            String[] capaspost = x.contPost.split(",");
+            for (int i = 0; i < contxbox; i++) {
+                num += capaspost[i] +" ";
+                Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(capaspost[i]));
+                nuevaImagen(conexion3);
+
+            }
+
+        }else if(RadioPre.isSelected()) {
+            System.out.println("Preorden");
+            x.InicioPreOrden();
+            String[] capaspre = x.contPre.split(",");
+            for (int i = 0; i < contxbox; i++) {
+                num += capaspre[i] +" ";
+                Nodobb conexion3 = x.IniciarBusquedabb(Integer.parseInt(capaspre[i]));
+                nuevaImagen(conexion3);
+            }
+        }
+        contRecorrido.setText(num);
+        imagenes.mayorcol();
+        imagenes.mayorfila();
+        imagenes.graficar(num);
+        progres();
+    }
+
+    public void nuevaImagen(Nodobb conexion3){
+        if (conexion3 != null) {
+            Nodo aux = conexion3.root;
+
+            while (aux != null) {
+                Nodo aux2 = aux;
+                while (aux2 != null) {
+                    imagenes.insertarNodo(aux2.x, aux2.y, aux2.color);
+                    aux2 = aux2.siguiente;
+                }
+                aux = aux.abajo;
+            }
+        }
+    }
+
+
+    public void borrarimg(ActionEvent actionEvent) {
     }
 }

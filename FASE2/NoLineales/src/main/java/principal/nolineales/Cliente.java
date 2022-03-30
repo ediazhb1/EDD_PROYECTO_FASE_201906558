@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
@@ -28,6 +29,7 @@ public class Cliente {
     public ImageView imgcapa;
     public ProgressBar progressb;
     public static Thread th;
+    public Label aviso;
 
     HelloApplication m = new HelloApplication();
     ABB arbol = new ABB();
@@ -80,6 +82,8 @@ public class Cliente {
                     conexion.insertarNodo(columna, fila, jsonobj2.get("color").toString());
                 }
             }
+            aviso.setText("Archivo Cargado!");
+            aviso.setTextFill(Color.GREEN);
             btCapa.setDisable(false);
         } catch (Exception e) {
             System.out.println("Error en parsear json de capas" + e);

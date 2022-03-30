@@ -44,6 +44,7 @@ public class ABB {
     }
 
     //-------------------RECORRIDO AMPLITUD-------------------
+    public String contAmplitud = "";
     public void InicioAmplitud(){
         this.Amplitud(this.inicial);
     }
@@ -54,21 +55,20 @@ public class ABB {
 
         if(nodo != null){
             ca.insertarCola(nodo);
-            System.out.println(nodo.getId());
+            contAmplitud += nodo.getId() + ",";
             while(ca.inicio.id !=null){
 
                 aux = ca.inicio.id;
                 ca.EliminarPrimero();
 
                 if(aux.getIzquierda() !=null) {
-                    System.out.print(aux.izquierda.getId() + ", ");
+                    contAmplitud += aux.izquierda.getId() + ",";
                     ca.insertarCola(aux.getIzquierda());
                 }
 
                 if(aux.getDerecha() !=null) {
-                    System.out.print(aux.derecha.getId() + ", ");
+                    contAmplitud += aux.derecha.getId() + ",";
                     ca.insertarCola(aux.getDerecha());
-                    System.out.println("");
                 }
 
                 if(ca.inicio == null){
@@ -77,13 +77,11 @@ public class ABB {
 
         }
        }
-
     }
 
 
-
-
     //-------------------PREORDEN----------------------
+    public String contPre = "";
     public void InicioPreOrden(){
         this.preOrden(this.inicial);
     }
@@ -92,7 +90,7 @@ public class ABB {
         if(nodo == null){
             return;
         }else{
-            System.out.print(nodo.getId() + ", ");
+            contPre += nodo.getId() + ",";
             preOrden(nodo.getIzquierda());
             preOrden(nodo.getDerecha());
 
@@ -101,6 +99,7 @@ public class ABB {
 
 
     //-------------------INORDEN----------------------
+    public String contIn = "";
     public void InicioInOrden(){
         this.InOrden(this.inicial);
     }
@@ -110,7 +109,7 @@ public class ABB {
             return;
         }else{
             InOrden(nodo.getIzquierda());
-            System.out.print(nodo.getId() + ", ");
+            contIn += nodo.getId() + ",";
             InOrden(nodo.getDerecha());
 
         }
@@ -118,6 +117,7 @@ public class ABB {
 
 
     //-------------------POSTORDEN----------------------
+    public String contPost = "";
     public void InicioPostOrden(){
         this.PostOrden(this.inicial);
     }
@@ -128,7 +128,7 @@ public class ABB {
         }else{
             PostOrden(nodo.getIzquierda());
             PostOrden(nodo.getDerecha());
-            System.out.print(nodo.getId() + ", ");
+            contPost += nodo.getId() + ",";;
         }
     }
 }

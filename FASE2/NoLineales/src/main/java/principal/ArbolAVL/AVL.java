@@ -136,12 +136,20 @@ public class AVL {
         }
     }
 
+    public void iniciarin(){
+        InOrden(this.raiz);
+    }
+
     public void InOrden(NodoAVL r){
         if(r != null){
             InOrden(r.izquierda);
             System.out.print(r.dato + ", ");
             InOrden(r.derecha);
         }
+    }
+
+    public void iniciarpre(){
+        PreOrden(this.raiz);
     }
 
     public void PreOrden(NodoAVL r){
@@ -152,6 +160,10 @@ public class AVL {
         }
     }
 
+    public void iniciarpost(){
+        PostOrden(this.raiz);
+    }
+
     public void PostOrden(NodoAVL r){
         if(r != null){
             InOrden(r.izquierda);
@@ -160,8 +172,5 @@ public class AVL {
         }
     }
 
-    public NodoAVL obtRaiz(){
-        return raiz;
-    }
 
 }
