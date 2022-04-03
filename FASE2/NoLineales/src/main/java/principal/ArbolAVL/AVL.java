@@ -136,6 +136,42 @@ public class AVL {
         }
     }
 
+    //-------------------graphbiz------------------------------
+    public String graph = "";
+    public void Iniciograph(boolean tipograph){
+        if(tipograph){
+            graph = "digraph G {\n";
+            graph += "node [shape=box]\n" +
+                    "label = \"Imagenes del Arbol AVL\";\n";
+            graph += "V"+raiz.dato+"[label = \""+raiz.dato+"\"]\n";
+            this.dotgraph(this.raiz);
+            graph += "}";
+        }else{
+            graph = "digraph G {\n";
+            graph += "node [shape=box]\n" +
+                    "label = \"Imagenes y Arbol de Capas \";\n";
+            graph += "V"+raiz.dato+"[label = \""+raiz.dato+"\"]\n";
+            this.dotgraph(this.raiz);
+        }
+
+    }
+
+    public void dotgraph(NodoAVL nodo){
+        if(nodo != null){
+            if(nodo.izquierda != null){
+                graph += "V"+nodo.izquierda.dato+"[label = \""+nodo.izquierda.dato+"\"]\n";
+                graph += "V"+nodo.dato + "->" + "V"+nodo.izquierda.dato + ";\n";
+            }
+            if(nodo.derecha != null){
+                graph += "V"+nodo.derecha.dato+"[label = \""+nodo.derecha.dato+"\"]\n";
+                graph += "V"+nodo.dato + "->" +"V"+ nodo.derecha.dato + ";\n";
+            }
+            dotgraph(nodo.izquierda);
+            dotgraph(nodo.derecha);
+        }
+
+    }
+
     public void iniciarin(){
         InOrden(this.raiz);
     }

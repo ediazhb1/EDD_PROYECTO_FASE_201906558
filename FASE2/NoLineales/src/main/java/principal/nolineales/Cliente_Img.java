@@ -18,6 +18,7 @@ import principal.ArbolBB.Nodobb;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Cliente_Img {
     public Button btnPRL;
@@ -48,16 +49,18 @@ public class Cliente_Img {
     HelloApplication m = new HelloApplication();
     AVL arbolavl = new AVL();
     Matriz imagenes = new Matriz();
+    reporte repor = new reporte();
 
     public void toCapa() throws IOException {
         m.changeCliente();
     }
 
     public void toAlbum(ActionEvent actionEvent) {
-        arbolavl.iniciarpre();
     }
 
-    public void toReport(ActionEvent actionEvent) {
+    public void toReport() throws IOException {
+
+        m.changeReporte();
     }
 
     public void toLogin() throws IOException {
@@ -192,7 +195,7 @@ public class Cliente_Img {
     public void CargarArchivo(ActionEvent actionEvent) {
         String ruta = "";
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Cargar el archivo");
+        fileChooser.setTitle("Cargar el archivo de imagenes");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("JSON", "*.json"),
                 new FileChooser.ExtensionFilter("ALL FILES", "*.*")
@@ -216,8 +219,6 @@ public class Cliente_Img {
         }
     }
 
-
-
     public void progres(){ //Cuando imagen ya fue graficada con graphviz, se inicia una progress bar para insertar la imagen en la UI
         th = new Thread() {
             public void run() {
@@ -240,10 +241,14 @@ public class Cliente_Img {
                         System.out.println("Error en el progress bar");//Dar mas tiempo de carga
                     }
                 }
-                File f = new File("src/main/resources/Capa"+ num +".png");
+                String dir = Paths.get("")
+                        .toAbsolutePath()
+                        .toString();
+
+                File f = new File(dir+"/"+"Capa"+ num +".png");
                 if (f.exists()) {
                     System.out.println("Exists: " + f.exists());
-                    Image image1 = new Image("file:" + "src/main/resources/Capa" + num + ".png");
+                    Image image1 = new Image("file:" +dir+"/"+ "Capa" + num + ".png");
                     imgcapa.setImage(image1);
 
                 } else {
@@ -270,6 +275,9 @@ public class Cliente_Img {
                     conexion.insertarbb(Integer.parseInt(capas.get(j).toString()));
                 }
             }
+
+            repor.heredarimg(arbolavl);
+
             btnCrearPRL.setDisable(false);
             btnCrearPAI.setDisable(false);
             btnCrearPC.setDisable(false);

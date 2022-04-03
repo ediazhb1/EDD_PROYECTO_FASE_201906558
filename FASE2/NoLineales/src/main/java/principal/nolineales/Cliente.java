@@ -13,13 +13,13 @@ import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import principal.ArbolBB.ABB;
 import principal.ArbolBB.Nodobb;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Cliente {
 
@@ -34,6 +34,7 @@ public class Cliente {
     HelloApplication m = new HelloApplication();
     ABB arbol = new ABB();
     Cliente_Img imgs = new Cliente_Img();
+    reporte repor = new reporte();
 
     public void toLogin() throws IOException {
         m.changeStart();
@@ -57,9 +58,8 @@ public class Cliente {
             System.out.println("Error, seleccione json");
         }
     }
-
+    public static String contcombo = "";
     public void Analyzer(String path) {
-        String contcombo = "";
         int fila;
         int columna;
         try {
@@ -82,6 +82,10 @@ public class Cliente {
                     conexion.insertarNodo(columna, fila, jsonobj2.get("color").toString());
                 }
             }
+
+            imgs.heredar(arbol);
+            repor.heredar(arbol);
+
             aviso.setText("Archivo Cargado!");
             aviso.setTextFill(Color.GREEN);
             btCapa.setDisable(false);
@@ -91,10 +95,10 @@ public class Cliente {
     }
 
     public void MostrarCapa() {
-        Nodobb conexion = arbol.IniciarBusquedabb(Integer.parseInt(cmbx.getValue()));
+        Nodobb conexion = arbol.IniciarBusquedabb(Integer.parseInt(cmbx.getValue())); // Busca la capa seleccionada en el combo en el arbol abb
         conexion.mayorcol();
         conexion.mayorfila();
-        conexion.graficar(cmbx.getValue());
+        conexion.graficar(cmbx.getValue());//Grafica los pixeles que tiene la capa seleccionada
         //conexion.imprimir();
 
         th = new Thread() {
@@ -118,10 +122,14 @@ public class Cliente {
                         System.out.println("Error en el progress bar");
                     }
                 }
-                File f = new File("src/main/resources/Capa"+cmbx.getValue()+".png");
+                String dir = Paths.get("")
+                        .toAbsolutePath()
+                        .toString();
+                System.out.println(dir);
+                File f = new File(dir+"/"+"Capa"+cmbx.getValue()+".png");
                 if (f.exists()) {
                     System.out.println("Exists: " + f.exists());
-                    Image image1 = new Image("file:" + "src/main/resources/Capa" + cmbx.getValue() + ".png");
+                    Image image1 = new Image("file:" +dir+"/"+"Capa"+cmbx.getValue()+".png");
                     imgcapa.setImage(image1);
 
                 } else {
@@ -132,15 +140,14 @@ public class Cliente {
 
     }
 
-    public void toImages() throws IOException, ParseException {
-        imgs.heredar(arbol);
+    public void toImages() throws IOException {
         m.changeImagen();
-
     }
 
     public void toAlbum(ActionEvent actionEvent) {
     }
 
-    public void toReport(ActionEvent actionEvent) {
+    public void toReport() throws IOException {
+        m.changeReporte();
     }
 }

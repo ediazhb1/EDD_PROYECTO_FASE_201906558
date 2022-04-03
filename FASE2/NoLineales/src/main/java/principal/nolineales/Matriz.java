@@ -2,12 +2,14 @@ package principal.nolineales;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 
 public class Matriz {
     public Nodo root;
     int MaxCol;
     int MaxFila;
     public String graph ="";
+    public String dotgraph ="";
 
     public Matriz() {
          root = new Nodo(-1,-1, "white");
@@ -41,6 +43,48 @@ public class Matriz {
         aux.abajo = null;
     }
 
+
+    public void dot(String Capa){
+        dotgraph = """
+                digraph G {
+                node [shape=box]
+                """;
+        dotgraph += "label = \"Matriz de la Capa "+ Capa +"\"\n";
+        dotgraph += "fontsize  = " + (MaxCol*3);
+        for(int i = 0; i<= MaxCol;i++){
+            for(int j = 0; j<= MaxFila;j++){
+                Nodo pixel = buscarpixel(j, i);
+                if(pixel != null){
+                    dotgraph += "Q"+i+"o"+j+"[fillcolor =\""+pixel.color+"\", style=\"filled\", label =\"\""+"];\n";
+                }else{
+                    dotgraph += "Q"+i+"o"+j+"[label =\"\""+"];\n";
+                }
+
+            }
+        }
+        for(int i = 0; i<= MaxCol;i++){
+            dotgraph += "{rank = same; ";
+            for(int j = 0; j<= MaxFila;j++){
+                dotgraph += "Q"+i+"o"+j+"; ";
+            }
+            dotgraph += "}\n";
+        }
+
+        for(int i = 0; i<= MaxCol;i++){
+            for(int j = 0; j<MaxFila;j++){
+                dotgraph += "Q"+i+"o"+j+" -> Q"+i+"o"+(j+1)+"[dir=both,arrowsize=0.5]\n";
+            }
+            dotgraph += "\n";
+        }
+
+        for(int i = 0; i<= MaxFila;i++){
+            for(int j = 0; j< MaxCol;j++){
+                dotgraph += "Q"+j+"o"+i+" -> Q"+(j+1)+"o"+i+"[dir=both]\n";
+            }
+            dotgraph += "\n";
+        }
+        dotgraph += "}";
+    }
 
 
     public void graficar(String Capa){
@@ -95,8 +139,12 @@ public class Matriz {
             }
         }
         try{
+
             ProcessBuilder proceso;
-            proceso = new ProcessBuilder("dot", "-Tpng", "-o","src/main/resources/Capa"+Capa+".png","Capas.dot");
+            String dir = Paths.get("")
+                    .toAbsolutePath()
+                    .toString();
+            proceso = new ProcessBuilder("dot", "-Tpng", "-o", dir+"/"+"Capa"+Capa+".png","Capas.dot");
             proceso.redirectErrorStream(true);
             proceso.start();
         }catch (Exception e){

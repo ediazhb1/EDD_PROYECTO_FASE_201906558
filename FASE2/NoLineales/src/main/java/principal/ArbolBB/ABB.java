@@ -43,6 +43,41 @@ public class ABB {
         return finals;
     }
 
+    //-------------------graphbiz------------------------------
+    public String graph = "";
+    public void Iniciograph(boolean tipograph,String union){
+        if(tipograph){
+            graph = "digraph G {\n";
+            graph += "node [shape=circle]\n" +
+                    "label = \"Capas del Arbol Binario de Busqueda\";";
+            this.dotgraph(this.inicial);
+            graph += "}";
+        }else{
+            graph = "subgraph G2 {\n";
+            graph += "node [shape=circle]\n";
+            graph += "V"+union+"->"+inicial.getId()+";\n";
+            this.dotgraph(this.inicial);
+            graph += "}}";
+        }
+
+    }
+
+
+
+    public void dotgraph(Nodobb nodo){
+        if(nodo != null){
+            if(nodo.izquierda != null){
+                graph += nodo.getId() + "->" + nodo.izquierda.getId() + ";\n";
+            }
+            if(nodo.derecha != null){
+                graph += nodo.getId() + "->" + nodo.derecha.getId() + ";\n";
+            }
+            dotgraph(nodo.izquierda);
+            dotgraph(nodo.derecha);
+        }
+    }
+
+
     //-------------------RECORRIDO AMPLITUD-------------------
     public String contAmplitud = "";
     public void InicioAmplitud(){
@@ -55,7 +90,7 @@ public class ABB {
 
         if(nodo != null){
             ca.insertarCola(nodo);
-            contAmplitud += nodo.getId() + ",";
+            contAmplitud = nodo.getId() + ",";
             while(ca.inicio.id !=null){
 
                 aux = ca.inicio.id;

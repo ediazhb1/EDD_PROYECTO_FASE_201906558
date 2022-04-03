@@ -13,7 +13,4 @@ public class NodoAVL extends ABB {
         this.derecha = null;
     }
 
-    public int getDato() {
-        return dato;
-    }
 }

@@ -2,9 +2,11 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.Cliente_Img">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.nolineales.reporte">
    <top>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #103440;" BorderPane.alignment="CENTER">
          <children>
@@ -48,7 +50,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#CargarArchivo" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #1B9DCC;" text="Cargar Imágenes" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#toImg" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargar Imágenes" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -80,7 +82,7 @@
                </cursor>
             </Button>
             <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#toReport" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Reportes" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #1B9DCC;" text="Reportes" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -128,40 +130,28 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="863.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imgcapa" fitHeight="505.0" fitWidth="434.0" layoutX="245.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Line endX="105.0" endY="-194.0" layoutX="117.0" layoutY="208.0" startX="115.0" startY="310.0" />
-            <Button fx:id="btnPRL" layoutX="37.0" layoutY="124.0" mnemonicParsing="false" onAction="#PRL" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Recorrido Limitado" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <ImageView fx:id="imgest" fitHeight="635.0" fitWidth="488.0" layoutX="256.0" layoutY="14.0" pickOnBounds="true" />
+            <Line endX="105.0" endY="-194.0" layoutX="117.0" layoutY="210.0" startX="112.0" startY="450.0" />
+            <ProgressBar fx:id="progressb" layoutX="544.0" layoutY="661.0" prefWidth="200.0" progress="0.0" />
+            <Button fx:id="btMEstru" layoutX="48.0" layoutY="228.0" mnemonicParsing="false" onAction="#Estructuras" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Estructuras" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <ProgressBar fx:id="progressb" layoutX="485.0" layoutY="509.0" prefWidth="200.0" progress="0.0" />
-            <Button fx:id="btPAI" layoutX="38.0" layoutY="210.0" mnemonicParsing="false" onAction="#PAI" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por Árbol de Imágenes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="btMReportes" layoutX="48.0" layoutY="316.0" mnemonicParsing="false" onAction="#Reportes" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Reportes" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btPCapa" layoutX="38.0" layoutY="301.0" mnemonicParsing="false" onAction="#PCapa" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: #267896;" text="Por capa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="Titulo" alignment="CENTER" layoutX="22.0" prefHeight="57.0" prefWidth="185.0" text="Por Recorrido Limitado" textAlignment="CENTER" underline="true" visible="false" wrapText="true">
+            <Label fx:id="Titulo" alignment="CENTER" layoutX="22.0" prefHeight="57.0" prefWidth="185.0" text="Estado de Estructuras" textAlignment="CENTER" underline="true" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="numero" layoutX="37.0" layoutY="70.0" prefHeight="32.0" prefWidth="138.0" text="Número de Capas:" visible="false" />
-            <TextField fx:id="txboxnum" focusTraversable="false" layoutX="36.0" layoutY="103.0" visible="false" />
-            <RadioButton fx:id="RadioIn" layoutX="38.0" layoutY="173.0" mnemonicParsing="false" text="Inorden" visible="false" />
-            <RadioButton fx:id="RadioPre" layoutX="38.0" layoutY="201.0" mnemonicParsing="false" text="Preorden" visible="false" />
-            <RadioButton fx:id="RadioPos" layoutX="38.0" layoutY="230.0" mnemonicParsing="false" text="Posorden" visible="false" />
-            <Label fx:id="Recorrido" layoutX="37.0" layoutY="141.0" text="Recorrido:" visible="false" />
-            <Label fx:id="Recorrido2" layoutX="32.0" layoutY="401.0" text="Recorrido:" visible="false" />
-            <Label fx:id="contRecorrido" layoutX="48.0" layoutY="428.0" prefHeight="52.0" prefWidth="166.0" text="Label" textAlignment="CENTER" visible="false" wrapText="true" />
-            <Button fx:id="regresar" layoutX="24.0" layoutY="489.0" mnemonicParsing="false" onAction="#toBacks" prefHeight="39.0" prefWidth="42.0" style="-fx-background-color: #267896;" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+            <Label fx:id="subtitulo" layoutX="37.0" layoutY="70.0" prefHeight="32.0" prefWidth="160.0" text="Seleccionar Estructura" visible="false" />
+            <Button fx:id="regresar" layoutX="24.0" layoutY="640.0" mnemonicParsing="false" onAction="#toBacks" prefHeight="39.0" prefWidth="42.0" style="-fx-background-color: #267896;" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -173,22 +163,23 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnCrearPRL" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPRL" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+            <Button fx:id="btnEstructura" layoutX="81.0" layoutY="640.0" mnemonicParsing="false" onAction="#CrearEstructura" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Mostrar Estructura" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnCrearPAI" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPAI" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnCrearPC" disable="true" layoutX="81.0" layoutY="489.0" mnemonicParsing="false" onAction="#CrearImgPC" prefHeight="40.0" prefWidth="121.0" style="-fx-background-color: #267896;" text="Crear Imagen" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Label fx:id="lbCarga" layoutX="524.0" layoutY="536.0" text="Sin Cargar Archivo" textFill="RED" />
+            <ComboBox fx:id="combo" layoutX="40.0" layoutY="102.0" onAction="#clickcombo" prefWidth="150.0" visible="false" />
+            <TableView fx:id="tablota" layoutX="40.0" layoutY="12.0" prefHeight="641.0" prefWidth="725.0">
+              <columns>
+                <TableColumn editable="false" prefWidth="149.0" text="Img con mas capas" />
+                <TableColumn editable="false" prefWidth="98.0" text="Capas Hoja" />
+                  <TableColumn prefWidth="105.0" text="Profundidad" />
+                  <TableColumn prefWidth="99.0" text="Inorden" />
+                  <TableColumn prefWidth="99.0" text="Preorden" />
+                  <TableColumn prefWidth="99.0" text="Postorden" />
+              </columns>
+            </TableView>
+            <TextField fx:id="txid" layoutX="38.0" layoutY="154.0" prefHeight="24.0" prefWidth="153.0" promptText="Ingrese ID" visible="false" />
          </children>
       </AnchorPane>
    </center>
