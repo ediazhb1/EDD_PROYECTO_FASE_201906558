@@ -23,13 +23,15 @@ public class reporte {
     public Button btMReportes;
     public Button btMEstru;
     public ComboBox combo;
-    public TableView tablota;
     public static ABB x;
     public static AVL y;
     public ImageView imgest;
     public ProgressBar progressb;
     public static Thread th;
     public TextField txid;
+
+    public Label top5;
+
 
     HelloApplication m = new HelloApplication();
 
@@ -64,17 +66,15 @@ public class reporte {
         combo.getItems().addAll("MATRIZ - CAPAS");
         combo.getItems().addAll("AVL Y ABB - IMG Y CAPAS");
 
-
-
     }
 
     public void Reportes(ActionEvent actionEvent) {
         btMEstru.setVisible(false);
         btMReportes.setVisible(false);
         regresar.setVisible(true);
-        tablota.setVisible(true);
 
     }
+
 
     public void toBacks(ActionEvent actionEvent) {
         btnEstructura.setVisible(false);
@@ -84,7 +84,6 @@ public class reporte {
         Titulo.setVisible(false);
         subtitulo.setVisible(false);
         combo.setVisible(false);
-        tablota.setVisible(false);
     }
 
     public void heredar(ABB harbol){

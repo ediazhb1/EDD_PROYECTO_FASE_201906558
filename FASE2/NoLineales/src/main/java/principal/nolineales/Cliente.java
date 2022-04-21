@@ -30,6 +30,7 @@ public class Cliente {
     public ProgressBar progressb;
     public static Thread th;
     public Label aviso;
+    public static String contcombo = "";
 
     HelloApplication m = new HelloApplication();
     ABB arbol = new ABB();
@@ -58,7 +59,7 @@ public class Cliente {
             System.out.println("Error, seleccione json");
         }
     }
-    public static String contcombo = "";
+
     public void Analyzer(String path) {
         int fila;
         int columna;
