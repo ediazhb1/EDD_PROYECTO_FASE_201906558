@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.edrawing.Register">
+    <left>
+        <AnchorPane prefHeight="539.0" prefWidth="227.0" style="-fx-background-color: #116fa2;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="192.0" fitWidth="182.0" layoutX="23.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../news.png" />
+                    </image>
+                </ImageView>
+                <Button layoutY="2.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="50.0" prefWidth="39.0" style="-fx-background-color: #116fa3;" />
+                <ImageView disable="true" fitHeight="38.0" fitWidth="35.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../back.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="450.0" prefWidth="369.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="88.0" layoutY="23.0" text="Registro Clientes">
+                    <font>
+                        <Font name="Gubbi" size="28.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="121.0" text="NOMBRE COMPLETO">
+                    <font>
+                        <Font name="Inter Black" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="27.0" layoutY="161.0" text="DPI">
+                    <font>
+                        <Font name="Inter Black" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="282.0" text="CONTRASEÑA">
+                    <font>
+                        <Font name="Inter Black" size="13.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txnombre" layoutX="228.0" layoutY="118.0" promptText="Nombre Completo">
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor></TextField>
+                <TextField fx:id="txdpi" layoutX="228.0" layoutY="158.0" promptText="DPI">
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor></TextField>
+            <TextField fx:id="txusuario" layoutX="228.0" layoutY="200.0" promptText="Nombre De Usuario">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="txcorreo" layoutX="228.0" layoutY="240.0" promptText="Correo">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+                <PasswordField fx:id="txpass" layoutX="228.0" layoutY="279.0" promptText="CONTRASEÑA">
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor></PasswordField>
+            <TextField fx:id="txtel" layoutX="228.0" layoutY="320.0" promptText="Teléfono">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="txdire" layoutX="228.0" layoutY="360.0" promptText="Dirección">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="txmuni" layoutX="228.0" layoutY="399.0" promptText="Municipio">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="26.0" layoutY="203.0" text="NOMBRE DE USUARIO">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+                <Button layoutX="157.0" layoutY="461.0" mnemonicParsing="false" onAction="#Registrar" prefHeight="46.0" prefWidth="101.0" style="-fx-background-color: #43b6d3;" text="Registrar">
+                    <font>
+                        <Font name="Inter Bold" size="13.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Label fx:id="lbregistrado" layoutX="122.0" layoutY="308.0" textFill="#0286f5" />
+            <Label layoutX="26.0" layoutY="243.0" text="CORREO">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="402.0" text="ID_MUNICIPIO">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="323.0" text="TELÉFONO">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="363.0" text="DIRECCIÓN">
+               <font>
+                  <Font name="Inter Black" size="13.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

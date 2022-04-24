@@ -1,0 +1,29 @@
+{
+    "Grafo": [
+        {
+        "inicio": 17,
+        "final": 13,
+        "peso": 5
+        },
+        {
+        "inicio": 17,
+        "final": 16,
+        "peso": 3
+        },
+        {
+        "inicio": 14,
+        "final": 13,
+        "peso": 3
+        },
+        {
+        "inicio": 14,
+        "final": 16,
+        "peso": 1
+        },
+        {
+        "inicio": 8,
+        "final": 13,
+        "peso": 5
+        }
+    ]
+}

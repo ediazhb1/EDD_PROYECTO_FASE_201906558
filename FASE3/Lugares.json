@@ -1,0 +1,14 @@
+"Lugares": [
+    {
+    "id": 17,
+    "departamento": "Guatemala",
+    "nombre": "Amatitlán",
+    "sn_sucursal": "si",
+    },
+    {
+    "id": 13,
+    "departamento": "Guatemala",
+    "nombre": "Villa Nueva",
+    "sn_sucursal": "no",
+    }
+]
