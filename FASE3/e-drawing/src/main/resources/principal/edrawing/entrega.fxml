@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,10 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.edrawing.Cliente">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="principal.edrawing.Entregas">
    <top>
       <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #103440;" BorderPane.alignment="CENTER">
          <children>
@@ -28,7 +28,7 @@
       <VBox prefHeight="511.0" prefWidth="201.0" style="-fx-background-color: #267896;" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #1B9DCC;" text="Cargas Masivas" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Masiva" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Cargas Masivas" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -46,7 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#Entregas" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #147a9e;" text="Operación de Entrega" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="205.0" style="-fx-background-color: #1B9DCC;" text="Operación de Entrega" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -64,8 +64,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <HBox prefHeight="9.0" prefWidth="190.0" style="-fx-background-color: #267896;" />
-            <Button fx:id="btcerrar" onAction="#CerrarSesion" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="204.0" style="-fx-background-color: #147a9e;" text="Cerrar Sesión" textFill="WHITE">
+            <Button fx:id="btcerrar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#CerrarSesion" prefHeight="43.0" prefWidth="204.0" style="-fx-background-color: #147a9e;" text="Cerrar Sesión" textFill="WHITE">
                <font>
                   <Font size="12.0" />
                </font>
@@ -97,54 +96,22 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="643.0" prefWidth="699.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Line endX="105.0" endY="-194.0" layoutX="143.0" layoutY="208.0" startX="105.0" />
-            <Label fx:id="avisoLugares" layoutX="370.0" layoutY="140.0" text="Sin Cargar Archivo" textFill="RED">
-               <font>
-                  <Font size="12.0" />
-               </font></Label>
-            <Line endX="105.0" endY="-194.0" layoutX="489.0" layoutY="208.0" startX="105.0" />
-            <Button layoutX="39.0" layoutY="98.0" mnemonicParsing="false" onAction="#jsonMensajero" prefHeight="47.0" prefWidth="135.0" text="Cargar Archivo" />
-            <Button layoutX="358.0" layoutY="88.0" mnemonicParsing="false" onAction="#jsonLugares" prefHeight="47.0" prefWidth="135.0" text="Cargar Archivo" />
-            <Button layoutX="683.0" layoutY="90.0" mnemonicParsing="false" onAction="#jsonRutas" prefHeight="47.0" prefWidth="135.0" text="Cargar Archivo" />
-            <Label layoutX="55.0" layoutY="53.0" text="Mensajeros">
+            <Line endX="105.0" endY="-194.0" layoutX="117.0" layoutY="208.0" startX="105.0" startY="390.0" />
+            <Button layoutX="40.0" layoutY="242.0" mnemonicParsing="false" onAction="#Entregar" prefHeight="47.0" prefWidth="135.0" text="Entregar" />
+            <Label layoutX="55.0" layoutY="14.0" text="Mensajeros">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="387.0" layoutY="42.0" text="Lugares">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Label>
-            <Label layoutX="674.0" layoutY="46.0" text="Rutas Municipios">
+            <Label layoutX="15.0" layoutY="135.0" text="Nombre de Sucursal">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="avisoMensaje" layoutX="51.0" layoutY="150.0" text="Sin Cargar Archivo" textFill="RED">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="avisoRuta" layoutX="695.0" layoutY="142.0" text="Sin Cargar Archivo" textFill="RED">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="adya" fitHeight="500.0" fitWidth="375.0" layoutX="27.0" layoutY="228.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../noimage.jpg" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="10.0" fill="TRANSPARENT" height="500.0" layoutX="27.0" layoutY="228.0" stroke="BLACK" strokeType="INSIDE" width="375.0" />
-            <ImageView fx:id="nodiri" fitHeight="500.0" fitWidth="400.0" layoutX="457.0" layoutY="228.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../noimage.jpg" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="10.0" fill="TRANSPARENT" height="500.0" layoutX="457.0" layoutY="228.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
+            <ComboBox fx:id="cmbx" layoutX="32.0" layoutY="52.0" prefWidth="150.0" />
+            <ComboBox fx:id="cmbsucursal" layoutX="32.0" layoutY="165.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </center>

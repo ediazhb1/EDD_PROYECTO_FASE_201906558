@@ -20,8 +20,8 @@
                         <Image url="@../../news.png" />
                     </image>
                 </ImageView>
-                <Button layoutY="2.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="50.0" prefWidth="39.0" style="-fx-background-color: #116fa3;" />
-                <ImageView disable="true" fitHeight="38.0" fitWidth="35.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                <Button fx:id="btcerrar" layoutY="2.0" mnemonicParsing="false" onAction="#toLogin" prefHeight="50.0" prefWidth="39.0" style="-fx-background-color: #116fa3;" />
+                <ImageView  disable="true" fitHeight="38.0" fitWidth="35.0" layoutX="1.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../back.png" />
                     </image>
@@ -97,7 +97,7 @@
                   <Font name="Inter Black" size="13.0" />
                </font>
             </Label>
-                <Button layoutX="157.0" layoutY="461.0" mnemonicParsing="false" onAction="#Registrar" prefHeight="46.0" prefWidth="101.0" style="-fx-background-color: #43b6d3;" text="Registrar">
+                <Button fx:id="btnregi" layoutX="157.0" layoutY="461.0" mnemonicParsing="false" onAction="#Registrar" prefHeight="46.0" prefWidth="101.0" style="-fx-background-color: #43b6d3;" text="Registrar">
                     <font>
                         <Font name="Inter Bold" size="13.0" />
                     </font>

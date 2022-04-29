@@ -1,5 +1,7 @@
 package principal.arbolb;
 
+import javafx.stage.Stage;
+
 public class BTree {
     String graph ="";
     int orden = 5;
@@ -13,8 +15,8 @@ public class BTree {
         this.raiz = null;
     }
 
-    public void insertarB(long dpi,String nombre,String usuario, String correo, String contra, String tel, String dir, String muni){
-        BNode nodo = new BNode(dpi,nombre,usuario,correo,contra,tel,dir,muni);
+    public void insertarB(long dpi,String nombre,String usuario, String correo, String contra, String tel, String dir, String muni, Stage perfil){
+        BNode nodo = new BNode(dpi,nombre,usuario,correo,contra,tel,dir,muni,perfil);
         if (this.raiz == null) {
             this.raiz = new BLeaf();
             this.raiz.insertar(nodo);
@@ -71,6 +73,7 @@ public class BTree {
     public BNode dividirRama(BLeaf rama) {
         long val = -999;
         String nom= "",usu= "",correo= "",contra= "",tel= "",dir= "",muni = "";
+        Stage perfil=null;
         BNode temp, Nuevito;
         BNode aux = rama.primero;
         BLeaf rderecho = new BLeaf();
@@ -81,7 +84,7 @@ public class BTree {
             cont++;
             //implementacion para dividir unicamente ramas de 4 nodos
             if (cont < 3) {
-                temp = new BNode(aux.dpi,aux.nombre,aux.usuario,aux.correo,aux.contra,aux.tel,aux.dir,aux.muni);
+                temp = new BNode(aux.dpi,aux.nombre,aux.usuario,aux.correo,aux.contra,aux.tel,aux.dir,aux.muni,aux.perfil);
                 temp.izquierdo = aux.izquierdo;
                 if (cont == 2) {
                     temp.derecho = aux.siguiente.izquierdo;
@@ -104,8 +107,9 @@ public class BTree {
                 tel = aux.tel;
                 dir = aux.dir;
                 muni = aux.muni;
+                perfil = aux.perfil;
             } else {
-                temp = new BNode(aux.dpi, aux.nombre,aux.usuario,aux.correo,aux.contra,aux.tel,aux.dir,aux.muni);
+                temp = new BNode(aux.dpi, aux.nombre,aux.usuario,aux.correo,aux.contra,aux.tel,aux.dir,aux.muni,aux.perfil);
                 temp.izquierdo = aux.izquierdo;
                 temp.derecho = aux.derecho;
                 //si la rama posee ramas deja de ser hoja
@@ -116,7 +120,7 @@ public class BTree {
             }
             aux = aux.siguiente;
         }
-        Nuevito = new BNode(val,nom,usu,correo,contra,tel,dir,muni);
+        Nuevito = new BNode(val,nom,usu,correo,contra,tel,dir,muni,perfil);
         Nuevito.derecho = rderecho;
         Nuevito.izquierdo = rizquierdo;
         return Nuevito;

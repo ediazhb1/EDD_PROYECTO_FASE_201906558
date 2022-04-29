@@ -1,0 +1,34 @@
+{
+    "Lugares": [
+        {
+            "id": 1,
+            "departamento": "Guatemala",
+            "nombre": "San Juan Sacatepequez",
+            "sn_sucursal": "si"
+        },
+        {
+            "id": 2,
+            "departamento": "Guatemala",
+            "nombre": "San Raymundo",
+            "sn_sucursal": "no"
+        },
+        {
+            "id": 3,
+            "departamento": "Guatemala",
+            "nombre": "Chuarrancho",
+            "sn_sucursal": "si"
+        },
+        {
+            "id": 4,
+            "departamento": "Guatemala",
+            "nombre": "San Jose del Golfo",
+            "sn_sucursal": "si"
+        },
+        {
+            "id": 5,
+            "departamento": "Guatemala",
+            "nombre": "San Pedro Ayampuc",
+            "sn_sucursal": "no"
+        }
+    ]
+}

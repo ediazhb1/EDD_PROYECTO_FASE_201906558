@@ -1,42 +1,34 @@
 package principal.edrawing;
 
 public class Dijkstra {
-    public int[] ejecutar(int[][] grafo, int nodo) {
-        final boolean[] visitados = new boolean[grafo.length];
-        final int[] distanciasCortas = new int[grafo.length];
-        visitados[0] = true;
-        for (int i = 1; i < distanciasCortas.length; i++) {
-            if (grafo[nodo][i] != 0) {
-                distanciasCortas[i] =
-                        grafo[nodo][i];
-            } else {
-                distanciasCortas[i] = Integer.MAX_VALUE;
-            }
-        }
-        for (int i = 0; i < (distanciasCortas.length - 1); i++) {
-            final int siguiente = proximoVertice(distanciasCortas, visitados);
+    public int distance[] = new int[10];//Vector de almacenamiento
+    public static int cost[][] = new int[10][10];
 
-            visitados[siguiente] = true;
-            for (int j = 0; j < grafo[0].length; j++) {
-                final int d = distanciasCortas[siguiente] + grafo[siguiente][j];
-                if (distanciasCortas[j] > d) {
-                    distanciasCortas[j] = distanciasCortas[siguiente] + grafo[siguiente][j];
+    public void calc(int n, int s) {
+        int flag[] = new int[n + 1];
+        int i, minpos = 1, k, c, minimum;
+
+        for (i = 1; i <= n; i++) {
+            flag[i] = 0;
+            this.distance[i] = this.cost[s][i];
+        }
+        c = 2;
+        while (c <= n) {
+            minimum = 99;
+            for (k = 1; k <= n; k++) {
+                if (this.distance[k] < minimum && flag[k] != 1) {
+                    minimum = this.distance[i];
+                    minpos = k;
                 }
             }
-
-        }
-        return distanciasCortas;
-    }
-
-    private static int proximoVertice(int[] distanciasCortas, boolean[] visitados) {
-        int x = Integer.MAX_VALUE;
-        int y = -1;
-        for (int i = 0; i < distanciasCortas.length; i++) {
-            if (!visitados[i] && distanciasCortas[i] < x) {
-                y = i;
-                x = distanciasCortas[i];
+            flag[minpos] = 1;
+            c++;
+            for (k = 1; k <= n; k++) {
+                if (this.distance[minpos] + cost[minpos][k] < this.distance[k] && flag[k] != 1)
+                    this.distance[k] = this.distance[minpos] + this.cost[minpos][k];
             }
+
         }
-        return y;
     }
+
 }

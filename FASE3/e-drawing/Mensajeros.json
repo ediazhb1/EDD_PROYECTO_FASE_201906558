@@ -2,7 +2,7 @@
     {
         "dpi":"1532165789145",
         "nombres":"Dev",
-        "apellido":"Dsa",
+        "apellidos":"Dsa",
         "tipo_licencia":"A",
         "genero": "Female",
         "direccion": "78av Maple"
@@ -10,7 +10,7 @@
     {
         "dpi":"6542165489156",
         "nombres":"Devon",
-        "apellido":"Darin",
+        "apellidos":"Darin",
         "tipo_licencia":"B",
         "genero": "Male",
         "direccion": "5 North Maple"

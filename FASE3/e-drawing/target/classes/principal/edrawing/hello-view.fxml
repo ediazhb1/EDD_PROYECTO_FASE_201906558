@@ -52,12 +52,12 @@
                         <Font name="Gubbi" size="25.0" />
                     </font>
                 </Label>
-                <Button layoutX="81.0" layoutY="299.0" mnemonicParsing="false" onAction="#actLog" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #43b6d3;" text="Ingresar">
+                <Button fx:id="btningre" layoutX="81.0" layoutY="299.0" mnemonicParsing="false" onAction="#actLog" prefHeight="30.0" prefWidth="78.0" style="-fx-background-color: #43b6d3;" text="Ingresar">
                     <font>
                         <Font name="Inter Bold" size="13.0" />
                     </font>
                 </Button>
-                <Button layoutX="235.0" layoutY="299.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #43b6d3;" text="Registrar">
+                <Button fx:id="btnreg" layoutX="235.0" layoutY="299.0" mnemonicParsing="false" onAction="#toRegister" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #43b6d3;" text="Registrar">
                     <font>
                         <Font name="Inter Bold" size="13.0" />
                     </font>
