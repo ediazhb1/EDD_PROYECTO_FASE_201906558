@@ -183,25 +183,25 @@ public class Cliente {
             System.out.println("Error en parsear json de Lugares" + e);
         }
     }
+
+    public static JSONArray jsonarraru;
     public void jsonRutas(ActionEvent actionEvent) {
         RutaArchivo();
         try {
             JSONParser parser = new JSONParser();
             Object obj = parser.parse(new FileReader(ruta));
             JSONObject jsonobj = (JSONObject) obj;
-            JSONArray jsonarra = (JSONArray) jsonobj.get("Grafo");
+            jsonarraru = (JSONArray) jsonobj.get("Grafo");
             avisoRuta.setTextFill(Color.GREEN);
             miLista.nograph = "strict graph G  \n" +
                     "{\n" +
                     "    layout =neato\n";
-            for (int i = 0; i < jsonarra.size(); i++) {
-                JSONObject jsonobj1 = (JSONObject) jsonarra.get(i);
-                miLista.conexion(Integer.parseInt(jsonobj1.get("inicio").toString()),Integer.parseInt(jsonobj1.get("final").toString()),Integer.parseInt(jsonobj1.get("peso").toString()));
-                miLista.nodirigido(jsonobj1.get("inicio").toString(),jsonobj1.get("final").toString(),jsonobj1.get("peso").toString());
+            for (int i = 0; i < jsonarraru.size(); i++) {
+                JSONObject jsonobjr1 = (JSONObject) jsonarraru.get(i);
+                miLista.conexion(Integer.parseInt(jsonobjr1.get("inicio").toString()),Integer.parseInt(jsonobjr1.get("final").toString()));
+                miLista.nodirigido(jsonobjr1.get("inicio").toString(),jsonobjr1.get("final").toString(),jsonobjr1.get("peso").toString());
             }
-            //miLista.imprimir();
-            System.out.println("------------------------------------");
-            miLista.matrizdijk();
+            //miLista.matrizdijk();
             miLista.nograph += "}";
             miLista.graph();
             GenerarGrafo(miLista.graph, "Adyacente");
@@ -223,6 +223,8 @@ public class Cliente {
                 JSONObject jsonobj1 = (JSONObject) jsonarra.get(i);
                 TH.insertar(Long.parseLong(jsonobj1.get("dpi").toString()),jsonobj1.get("nombres").toString(),jsonobj1.get("apellidos").toString(),jsonobj1.get("tipo_licencia").toString(),jsonobj1.get("genero").toString(),null,jsonobj1.get("direccion").toString());
             }
+
+
             avisoMensaje.setTextFill(Color.GREEN);
         }catch(Exception e) {
             System.out.println("Error en parsear json de Mensajero" + e);

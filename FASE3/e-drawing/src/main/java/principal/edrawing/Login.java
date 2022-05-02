@@ -57,7 +57,6 @@ public class Login {
             validacion = HelloApplication.arbol.iniciarBusquedas(txuser.getText(),txpass.getText());
             if(validacion != null) {
                 lbwrong.setText("");
-
                 validacion.perfil.show();
                 Stage myStage = (Stage) this.btningre.getScene().getWindow();
                 myStage.hide();

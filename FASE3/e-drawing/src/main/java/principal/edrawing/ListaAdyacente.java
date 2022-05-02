@@ -4,26 +4,24 @@ public class ListaAdyacente {
     private class ENodo {
 
         int ivex;//posicion del nodo conectado
-        int peso;
         ENodo siguiente;//nodo siguiete en la sublista
 
         //constructor de la clase
-        public ENodo(int ivex,int peso) {
+        public ENodo(int ivex) {
             this.ivex = ivex;
-            this.peso = peso;
             this.siguiente = null;
         }
     }
 
     //Vector de la lista de adyacencia
-    private class VNodo {
+    public class VNodo {
 
         String data;//valor del nodo
         ENodo inicio = null;//inicio de la sublista enlazada
 
         //metodo de insertar en la sublista
-        public void insert(int ivex, int peso) {
-            ENodo nuevo = new ENodo(ivex,peso);
+        public void insert(int ivex) {
+            ENodo nuevo = new ENodo(ivex);
             if (inicio == null) {
                 inicio = nuevo;
             } else {
@@ -38,10 +36,12 @@ public class ListaAdyacente {
             }
         }
 
+
+
         public void imprimir() {
             ENodo aux = inicio;
             while (aux != null) {
-                System.out.print("->" + "[" + aux.ivex + " peso: "+aux.peso+"]");
+                System.out.print("->" +"["+ aux.ivex+"]");
                 aux = aux.siguiente;
             }
         }
@@ -52,8 +52,8 @@ public class ListaAdyacente {
             Dijkstra.cost[valor][valor] = 0;
             while (aux != null) {
                 cont++;
-                Dijkstra.cost[valor][aux.ivex] = aux.peso;
-                System.out.print("->" + "[" + aux.ivex + " peso: "+aux.peso+"]");
+                Dijkstra.cost[valor][aux.ivex] =0;
+                System.out.print("->" + "[" + aux.ivex + " peso: "+"]");
                 aux = aux.siguiente;
             }
             //System.out.println(cont);
@@ -86,20 +86,14 @@ public class ListaAdyacente {
     VNodo v[];
     //imprimir la lsita de adyacencia del grafo
     public void imprimir() {
-        for (int i = 1; i < v.length; i++) {
-            System.out.print(i + "[id: " + v[i].data +"]");
+        for (int i = 0; i < v.length; i++) {
+            System.out.print(i+"[id: "+v[i].data+"]");
             v[i].imprimir();
             System.out.println("");
         }
     }
 
-    public void matrizdijk(){
-        for (int i = 1; i < v.length; i++) {
-            System.out.print(i + "[id: " + v[i].data +"]");
-            v[i].dijk(i,Integer.parseInt(v[i].data));
-            System.out.println("");
-        }
-    }
+
 
     public ListaAdyacente(int vlen) {
         v = new VNodo[vlen];
@@ -118,12 +112,11 @@ public class ListaAdyacente {
     }
 
     //insertar conexiones en el grafo
-    public void conexion(int inicio, int fin, int peso) {
+    public void conexion(int inicio, int fin) {
         if (inicio >= 0 && inicio < v.length) {
-            v[inicio].insert(fin,peso);
+            v[inicio].insert(fin);
         }
     }
-
 
 
     String graph = "";
@@ -159,8 +152,4 @@ public class ListaAdyacente {
         nograph += inicio + "--" + finales + "[xlabel = \""+peso+"\"];\n";
 
     }
-
-
-
-
 }

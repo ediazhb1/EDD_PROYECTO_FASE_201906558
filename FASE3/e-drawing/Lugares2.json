@@ -1,16 +1,16 @@
 {
     "Lugares": [
         {
-            "id": 1,
-            "departamento": "Guatemala",
-            "nombre": "San Juan Sacatepequez",
-            "sn_sucursal": "si"
-        },
-        {
             "id": 2,
             "departamento": "Guatemala",
             "nombre": "San Raymundo",
             "sn_sucursal": "no"
+        },
+        {
+            "id": 1,
+            "departamento": "Guatemala",
+            "nombre": "San Juan Sacatepequez",
+            "sn_sucursal": "si"
         },
         {
             "id": 3,

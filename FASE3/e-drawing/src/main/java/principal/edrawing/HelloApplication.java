@@ -47,8 +47,6 @@ public class HelloApplication extends Application {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-
-
             });
             //----------------------------------------------------------------------------------------------------------
             arbol.insertarB(0,"Administrador","admin","adm@adm.com","123","11223344","adm","ins",stage1);

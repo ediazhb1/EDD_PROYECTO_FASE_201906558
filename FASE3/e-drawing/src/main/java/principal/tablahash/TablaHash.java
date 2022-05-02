@@ -39,15 +39,14 @@ public class TablaHash {
         }
     }
 
-    public String nombres(){
-        String nombre ="";
+    public NodoHash buscarMensajero(String mensajero){
+        NodoHash encontrado = null;
         for (int i = 0; i < tabla.length; i++) {
-            if(tabla[i] == null){
-            }else{
-                nombre += "\""+tabla[i].nombre+ "\",\n";
+            if(tabla[i] != null && tabla[i].nombre.equals(mensajero) ) {
+                encontrado = tabla[i];
             }
         }
-        return nombre;
+        return encontrado;
     }
 
     public NodoHash[] reHashs(NodoHash[] tabla){

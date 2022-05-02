@@ -27,13 +27,13 @@ public class Register {
     public Button btcerrar;
 
     BNode validacion = null;
-    HelloApplication m = new HelloApplication();
+    //HelloApplication m = new HelloApplication();
 
     public void Registrar(ActionEvent event) throws IOException {
         if(txusuario.getText().isEmpty() || txpass.getText().isEmpty() || txdpi.getText().isEmpty() || txnombre.getText().isEmpty()) {
             System.out.println("Faltan Credenciales");
         }else{
-            validacion = m.arbol.BusquedaUsuario(txusuario.getText());
+            validacion = HelloApplication.arbol.BusquedaUsuario(txusuario.getText());
             if(validacion ==null){// Verifica si el usuario no esta ya registrado
                 long dpi = Long.parseLong(txdpi.getText());
                 //------------------------------Stage de Cargas Masivas----------------------------------------------------
